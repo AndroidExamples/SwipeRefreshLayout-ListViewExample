@@ -1,4 +1,6 @@
 SwipeRefreshLayout-ListViewExample
 ==================================
 
-An example using the SwipeRefreshLayout to animate the refreshing of a ListView, Usage of EmptyView supported.
+SwipeRefreshLayout example to animate the refreshing of a ListView.
+
+V. 0.1: Support for emptyView
