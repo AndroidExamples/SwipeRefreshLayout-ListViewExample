@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroidExamples-SwipeRefreshLayout</string>
+    <string name="empty">No items found!</string>
+    <string-array name="kings">
+        <item>Henry IV</item>
+        <item>Henry V</item>
+        <item> Henry VIII"</item>
+        <item>Richard II</item>
+        <item>Richard III</item>
+    </string-array>
+
+</resources>
