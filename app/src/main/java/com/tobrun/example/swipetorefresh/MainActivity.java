@@ -26,15 +26,6 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Adapter
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        mAdapter.addAll(new Vector(Arrays.asList(getResources().getStringArray(R.array.kings))));
-
-        // ListView
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setEmptyView(findViewById(R.id.swipeRefreshLayout_emptyView));
-        listView.setAdapter(mAdapter);
-
         // SwipeRefreshLayout
         mListViewContainer = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout_listView);
         mEmptyViewContainer = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout_emptyView);
@@ -42,15 +33,28 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
         // Configure SwipeRefreshLayout
         onCreateSwipeToRefresh(mListViewContainer);
         onCreateSwipeToRefresh(mEmptyViewContainer);
+
+        // Adapter
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+        mAdapter.addAll(new Vector(Arrays.asList(getResources().getStringArray(R.array.kings))));
+
+        // ListView
+        ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setEmptyView(mEmptyViewContainer);
+        listView.setAdapter(mAdapter);
+
     }
 
     private void onCreateSwipeToRefresh(SwipeRefreshLayout refreshLayout) {
+
         refreshLayout.setOnRefreshListener(this);
+
         refreshLayout.setColorScheme(
                 android.R.color.holo_blue_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_green_light,
                 android.R.color.holo_red_light);
+
     }
 
     @Override
@@ -75,6 +79,7 @@ public class MainActivity extends Activity implements SwipeRefreshLayout.OnRefre
 
                 // Notify adapters about the kings
                 mAdapter.notifyDataSetChanged();
+
             }
         }, 1000);
     }
